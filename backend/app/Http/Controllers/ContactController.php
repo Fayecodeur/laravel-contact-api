@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreContactRequest;
+use App\Http\Requests\UpdateContactRequest;
 use App\Http\Resources\ContactResource;
 use App\Models\Contact;
-use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
@@ -54,9 +54,14 @@ class ContactController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Contact $contact)
+    public function update(UpdateContactRequest $request, Contact $contact)
     {
-        //
+        $contact->update($request->validated());
+        return response()->json([
+            'status' => true,
+            'message' => 'Contact modifié avec succès',
+            'data' => new ContactResource($contact)
+        ], 201);
     }
 
     /**
