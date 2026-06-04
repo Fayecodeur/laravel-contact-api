@@ -43,16 +43,13 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        //
+        return response()->json([
+            'status' => true,
+            'message' => 'Contact récupéré avec succès',
+            'data' => new ContactResource($contact)
+        ], 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Contact $contact)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
