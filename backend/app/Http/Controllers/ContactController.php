@@ -69,6 +69,12 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Contact supprimé avec succès',
+            'data' => null
+        ], 200);
     }
 }
