@@ -8,3 +8,8 @@ export const getContact = async (): Promise<Contact[]> => {
   const response = await api.get("/contacts");
   return response.data.data;
 };
+
+export const createContact = async (data: Omit<Contact, "id">) => {
+  const response = await api.post<Contact>("/contacts", data);
+  return response.data;
+};
