@@ -1,11 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import ContactsPage from "./pages/ContactsPage ";
-import Navbar from "./components/Navbar";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <>
-      <Navbar />
+      <Toaster />
+
       <Routes>
         <Route path="/" element={<ContactsPage />} />
       </Routes>
