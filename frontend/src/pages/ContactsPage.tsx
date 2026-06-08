@@ -42,6 +42,7 @@ export default function ContactsPage() {
                 <th>Nom</th>
                 <th>Téléphone</th>
                 <th>Adresse</th>
+                <th>Action</th>
               </tr>
             </thead>
 
