@@ -1,5 +1,5 @@
 export type Contact = {
-  id: string;
+  id: number;
   name: string;
   phone: string;
   address?: string | null;
