@@ -18,3 +18,7 @@ export const getContactById = async (id: number): Promise<Contact> => {
   const response = await api.get(`/contacts/${id}`);
   return response.data.data;
 };
+
+export const deleteContact = async (id: number) => {
+  await api.delete(`/contacts/${id}`);
+};
