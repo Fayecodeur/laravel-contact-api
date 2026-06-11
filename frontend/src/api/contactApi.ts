@@ -1,5 +1,6 @@
 import axios from "axios";
 import type { Contact } from "../types/contact";
+import type { contactFormData } from "../schemas/contactSchema";
 const api = axios.create({
   baseURL: "http://127.0.0.1:8000/api",
 });
@@ -16,6 +17,12 @@ export const createContact = async (data: Omit<Contact, "id">) => {
 
 export const getContactById = async (id: number): Promise<Contact> => {
   const response = await api.get(`/contacts/${id}`);
+  return response.data.data;
+};
+
+export const updateContact = async (id: number, data: contactFormData) => {
+  const response = await api.put(`/contacts/${id}`, data);
+
   return response.data.data;
 };
 
