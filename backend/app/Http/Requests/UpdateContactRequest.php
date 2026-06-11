@@ -5,6 +5,8 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rule;
+
 
 class UpdateContactRequest extends FormRequest
 {
@@ -25,8 +27,14 @@ class UpdateContactRequest extends FormRequest
     {
         return [
             'name' => 'sometimes|string|max:50',
-            'phone' => 'sometimes|string|unique:contacts,phone' . $this->contact->id,
-            'address' => 'sometimes|string'
+
+            'phone' => [
+                'sometimes',
+                'string',
+                Rule::unique('contacts', 'phone')->ignore($this->route('contact')->id),
+            ],
+
+            'address' => 'sometimes|string',
         ];
     }
 
